@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Street Fighter recipes | sfrecipes.org</title>
     <style>
         body {
             background: #232323;
@@ -29,6 +29,44 @@
             animation: blinker 1s step-start infinite;
         }
 
+        @font-face {
+            font-family: 'Koulen-regular';
+            src: url('./Koulen-Regular.ttf');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        .main-logo {
+            margin: 50px 0 10px;
+            text-align: center;
+            color: #FFF;
+            font-size: 142px;
+            font-family: "Koulen-regular";
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            user-select: none;
+            line-height: 100px;
+            font-weight: 100;
+
+            &> span {
+               color: #FF9900;
+            }
+        }
+
+        .main-container {
+            p {
+                text-align: center;
+                color: #fff;
+                font-family: "Koulen-regular";
+                font-weight: 100;
+                font-size: 20px;
+                line-height: 10px;
+            }
+        }
+        
+
         @keyframes blinker {
             50% {
                 opacity: 0;
@@ -46,7 +84,13 @@
     </script>
 </head>
 <body>
-<pre class="string">$ > This application may store cookies and collect analytical data. If you do not agree, please leave this site.</pre>
-<pre class="string dib">$ > It's must be fun. Soon...&nbsp;</pre><div class="block"></div><br/>
+<div class="main-container">
+    <h1 class="main-logo">
+        <span>SF</span>RECIPES
+    </h1>
+    
+    <p>#streetfighter</p>
+    <p>out 2026</p>
+</div>
 </body>
 </html>
