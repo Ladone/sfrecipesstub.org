@@ -2,81 +2,628 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Street Fighter recipes | sfrecipes.org</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+    <title>SF Recipes — Street Fighter 6 avatar recipes | Coming soon</title>
+    <meta name="description" content="A home for Street Fighter 6 avatar recipes: find a look, copy the code, paste it into SF6 Character Creation. Coming soon — get notified when sfrecipes launches.">
+    <meta name="keywords" content="SF6 avatar recipes, Street Fighter 6 avatar, SF6 character creation, SF6 avatar codes, Street Fighter 6 World Tour avatar, SF6 looks, sfrecipes">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://sfrecipes.org/">
+    <meta name="theme-color" content="#0f1013">
+    <meta name="color-scheme" content="dark">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="SF Recipes">
+    <meta property="og:url" content="https://sfrecipes.org/">
+    <meta property="og:title" content="SF6 Avatar Recipes — Coming soon">
+    <meta property="og:description" content="Find a look, copy the code, paste it into the game. A home for Street Fighter 6 avatar recipes is on its way.">
+    <meta property="og:image" content="https://sfrecipes.org/assets/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="SF6 Avatar Recipes — Coming soon">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="SF6 Avatar Recipes — Coming soon">
+    <meta name="twitter:description" content="Find a look, copy the code, paste it into the game. A home for Street Fighter 6 avatar recipes is on its way.">
+    <meta name="twitter:image" content="https://sfrecipes.org/assets/og-image.png">
+
+    <!-- Icons -->
+    <link rel="icon" href="./assets/favicon-32.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="./assets/favicon-16.png" sizes="16x16" type="image/png">
+    <link rel="apple-touch-icon" href="./assets/apple-touch-icon.png">
+    <link rel="manifest" href="./site.webmanifest">
+
+    <!-- Fonts -->
+    <link rel="preload" href="./fonts/koulen-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="./fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "WebSite",
+                "@id": "https://sfrecipes.org/#website",
+                "url": "https://sfrecipes.org/",
+                "name": "SF Recipes",
+                "alternateName": ["sfrecipes", "sfrecipes.org"],
+                "description": "A home for Street Fighter 6 avatar recipes: find a look, copy the code, paste it into the game.",
+                "inLanguage": "en",
+                "publisher": { "@id": "https://sfrecipes.org/#organization" }
+            },
+            {
+                "@type": "Organization",
+                "@id": "https://sfrecipes.org/#organization",
+                "name": "SF Recipes",
+                "url": "https://sfrecipes.org/",
+                "logo": "https://sfrecipes.org/assets/icon-512.png"
+            }
+        ]
+    }
+    </script>
+
     <style>
-        body {
-            background: #232323;
-        }
-
-        .string {
-            color: #51b925;
-            margin: 4px 0;
-        }
-
-        .dib {
-            display: inline-block;
-        }
-        
-        .block {
-            display: inline-block;
-            width: 4px;
-            height: 10px;
-            background: #51b925;
-            transition: 0.5s;
-            animation: blinker 1s step-start infinite;
+        @font-face {
+            font-family: 'Koulen';
+            src: url('./fonts/koulen-latin.woff2') format('woff2');
+            font-weight: 400;
+            font-style: normal;
+            /* tiny and preloaded: wait for it instead of flashing a fallback */
+            font-display: block;
         }
 
         @font-face {
-            font-family: 'Koulen-regular';
-            src: url('./Koulen-Regular.ttf');
-            font-weight: normal;
+            font-family: 'Inter';
+            src: url('./fonts/inter-latin.woff2') format('woff2');
+            font-weight: 100 900;
             font-style: normal;
             font-display: swap;
         }
 
-        .main-logo {
-            margin: 50px 0 10px;
+        /* Arial tuned to Inter's metrics, so the swap doesn't shift the layout */
+        @font-face {
+            font-family: 'Inter Fallback';
+            src: local('Arial'), local('Helvetica');
+            ascent-override: 90.44%;
+            descent-override: 22.52%;
+            line-gap-override: 0%;
+            size-adjust: 107.12%;
+        }
+
+        :root {
+            --color-bg: #0f1013;
+            --color-surface: #17181c;
+            --color-surface-sunken: #0b0c0e;
+            --color-accent: #f29a2e;
+            --color-accent-soft: #2a1e10;
+            --color-on-accent: #140c02;
+            --color-text: #f4f4f5;
+            --color-text-muted: #a1a1aa;
+            --color-text-subtle: #71717a;
+            --color-border: #2a2c33;
+            --color-danger: #f05252;
+            --color-success-soft: #152a26;
+            --color-success-border: #235d4c;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --font-display: 'Koulen', Impact, 'Arial Narrow', sans-serif;
+            --font-body: 'Inter', 'Inter Fallback', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+            --gutter: 16px;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: var(--color-bg);
+            color: var(--color-text);
+            font-family: var(--font-body);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        p, h1, h2, h3, ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        img {
+            display: block;
+        }
+
+        [hidden] {
+            display: none !important;
+        }
+
+        .page {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            min-height: 100svh;
+            overflow: hidden;
+        }
+
+        .page > * {
+            position: relative;
+        }
+
+        /* Glow */
+
+        .glow {
+            position: absolute;
+            top: -120px;
+            left: 50%;
+            transform: translateX(-50%);
+            pointer-events: none;
+        }
+
+        .glow img {
+            max-width: none;
+        }
+
+        .glow--desktop {
+            display: none;
+        }
+
+        /* Header */
+
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            height: 60px;
+            padding: 0 var(--gutter);
+        }
+
+        .logo {
+            font-family: var(--font-display);
+            font-size: 24px;
+            line-height: 1.1;
+            letter-spacing: 0.01em;
+            color: var(--color-text);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--color-accent);
+        }
+
+        .status {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 14px 6px 12px;
+            border: 1px solid var(--color-accent);
+            border-radius: 999px;
+            background: var(--color-accent-soft);
+        }
+
+        .label {
+            font-size: 12px;
+            font-weight: 600;
+            line-height: 1.3;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: var(--color-accent);
+            white-space: nowrap;
+        }
+
+        /* Hero */
+
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 18px;
+            padding: 48px var(--gutter);
             text-align: center;
-            color: #FFE;
-            font-size: 88px;
-            font-family: "Koulen-regular";
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            appearance: none;
-            user-select: none;
-            line-height: 36px;
-            font-weight: 100;
+        }
 
-            &> span {
-               color: #FF9900;
+        .title {
+            font-family: var(--font-display);
+            font-weight: normal;
+            font-size: min(52px, 13.33vw);
+            line-height: 0.92;
+            letter-spacing: 0.01em;
+            text-transform: uppercase;
+            white-space: nowrap;
+            color: var(--color-text);
+        }
+
+        .title span {
+            display: block;
+        }
+
+        .title .accent {
+            color: var(--color-accent);
+        }
+
+        .lead {
+            max-width: 358px;
+            font-size: 15px;
+            line-height: 1.55;
+            color: var(--color-text-muted);
+        }
+
+        .meta {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding-top: 4px;
+        }
+
+        .small {
+            font-size: 13px;
+            line-height: 1.5;
+            color: var(--color-text-subtle);
+        }
+
+        /* Newsletter form */
+
+        .newsletter {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 100%;
+            text-align: left;
+        }
+
+        .newsletter__row {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .field {
+            display: flex;
+            flex: 1 1 auto;
+            flex-direction: column;
+            gap: 6px;
+            min-width: 0;
+        }
+
+        .field__control {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            height: 48px;
+            padding: 0 14px;
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md);
+            background: var(--color-surface-sunken);
+            transition: border-color .15s, box-shadow .15s;
+        }
+
+        .field__control:focus-within {
+            border-color: var(--color-accent);
+        }
+
+        .field__control img {
+            flex: none;
+            width: 18px;
+            height: 18px;
+        }
+
+        .field__input {
+            flex: 1 1 auto;
+            min-width: 0;
+            height: 100%;
+            padding: 0;
+            border: 0;
+            background: none;
+            outline: none;
+            font-family: inherit;
+            font-size: 15px;
+            line-height: 1.55;
+            color: var(--color-text);
+        }
+
+        .field__input::placeholder {
+            color: var(--color-text-subtle);
+            opacity: 1;
+        }
+
+        .field__helper {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+            line-height: 1.5;
+            color: var(--color-danger);
+        }
+
+        .field__helper img {
+            flex: none;
+            width: 14px;
+            height: 14px;
+        }
+
+        .field.is-invalid .field__control {
+            border: 1.5px solid var(--color-danger);
+            padding: 0 13.5px;
+            box-shadow: 0 0 0 4px rgba(240, 82, 82, 0.18);
+        }
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            height: 48px;
+            padding: 0 24px;
+            border: 0;
+            border-radius: var(--radius-md);
+            font-family: inherit;
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 20px;
+            white-space: nowrap;
+            cursor: pointer;
+            transition: background-color .15s, opacity .15s;
+        }
+
+        .button--primary {
+            background: var(--color-accent);
+            color: var(--color-on-accent);
+            filter: drop-shadow(0 8px 12px rgba(242, 153, 46, 0.25));
+        }
+
+        .button--primary:hover {
+            background: #f5a94e;
+        }
+
+        .button:focus-visible {
+            outline: 2px solid var(--color-accent);
+            outline-offset: 2px;
+        }
+
+        .button:disabled {
+            opacity: .6;
+            cursor: progress;
+        }
+
+        .alert {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            width: 100%;
+            padding: 12px 16px 12px 14px;
+            border: 1px solid var(--color-success-border);
+            border-radius: var(--radius-md);
+            background: var(--color-success-soft);
+            text-align: left;
+        }
+
+        .alert img {
+            flex: none;
+            width: 18px;
+            height: 18px;
+        }
+
+        .alert__content {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .alert__title {
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 1.3;
+            color: var(--color-text);
+        }
+
+        .alert__text {
+            font-size: 13px;
+            line-height: 1.5;
+            color: var(--color-text-muted);
+        }
+
+        /* Features */
+
+        .features {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            padding: 0 var(--gutter) 56px;
+        }
+
+        .features__title {
+            font-family: var(--font-display);
+            font-weight: normal;
+            font-size: 32px;
+            line-height: 1.1;
+            letter-spacing: 0.01em;
+            text-transform: uppercase;
+            color: var(--color-text);
+        }
+
+        .features__grid {
+            display: grid;
+            gap: 12px;
+            list-style: none;
+        }
+
+        .card {
+            display: flex;
+            gap: 14px;
+            padding: 16px 20px;
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            background: var(--color-surface);
+        }
+
+        .card__icon {
+            display: flex;
+            flex: none;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            border-radius: var(--radius-md);
+            background: var(--color-accent-soft);
+        }
+
+        .card__icon img {
+            width: 22px;
+            height: 22px;
+        }
+
+        .card__body {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            min-width: 0;
+        }
+
+        .card__title {
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 1.4;
+            letter-spacing: -0.002em;
+            color: var(--color-text);
+        }
+
+        .card__text {
+            font-size: 13px;
+            line-height: 1.5;
+            color: var(--color-text-muted);
+        }
+
+        /* Footer */
+
+        .footer {
+            display: flex;
+            justify-content: center;
+            margin-top: auto;
+            padding: 20px var(--gutter) 28px;
+            border-top: 1px solid var(--color-border);
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        @media (min-width: 768px) {
+            :root {
+                --gutter: clamp(32px, 8.33vw, 120px);
             }
-        }
 
-        #sf {
-            color: #FF9900;
-        }
+            .glow {
+                top: -180px;
+            }
 
-        .main-container {
-            p {
+            .glow--mobile {
+                display: none;
+            }
+
+            .glow--desktop {
+                display: block;
+            }
+
+            .header {
+                height: 72px;
+            }
+
+            .logo {
+                font-size: 30px;
+            }
+
+            .hero {
+                gap: 24px;
+                padding: 104px var(--gutter) 88px;
+            }
+
+            .title {
+                font-size: min(104px, 9vw);
+            }
+
+            .lead {
+                max-width: 600px;
+                font-size: 18px;
+            }
+
+            .newsletter {
+                align-items: center;
+                width: 520px;
                 text-align: center;
-                color: #fff;
-                font-family: "Koulen-regular";
-                font-weight: 100;
-                font-size: 20px;
-                line-height: 10px;
+            }
+
+            .newsletter__row {
+                align-self: stretch;
+            }
+
+            .newsletter > .small {
+                white-space: nowrap;
+            }
+
+            .alert {
+                width: 520px;
+            }
+
+            .newsletter__row {
+                flex-direction: row;
+                align-items: flex-start;
+            }
+
+            .features {
+                gap: 20px;
+                padding-bottom: 104px;
+            }
+
+            .features__title {
+                font-size: 48px;
+                line-height: 1.05;
+            }
+
+            .features__grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 20px;
+            }
+
+            .card {
+                flex-direction: column;
+                gap: 16px;
+                padding: 24px 20px;
+            }
+
+            .footer {
+                padding-bottom: 24px;
             }
         }
-        
 
-        @keyframes blinker {
-            50% {
-                opacity: 0;
+        @media (min-width: 1100px) {
+            .features__grid {
+                grid-template-columns: repeat(4, minmax(0, 1fr));
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                transition: none !important;
             }
         }
     </style>
+
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-WTXRD2310C"></script>
     <script>
@@ -88,13 +635,175 @@
     </script>
 </head>
 <body>
-<div class="main-container">
-    <h1 class="main-logo">
-        <span>SF</span>RECIPES
-    </h1>
-    
-    <p id="sf">#streetfighter</p>
-    <p>out 2026</p>
+<div class="page">
+    <div class="glow glow--mobile" aria-hidden="true">
+        <img src="./assets/glow-mobile.svg" width="840" height="700" alt="">
+    </div>
+    <div class="glow glow--desktop" aria-hidden="true">
+        <img src="./assets/glow-desktop.svg" width="1580" height="1000" alt="">
+    </div>
+
+    <header class="header">
+        <a class="logo" href="/" aria-label="SF Recipes — home"><span>SF</span>RECIPES</a>
+        <div class="status">
+            <img src="./assets/dot.svg" width="6" height="6" alt="">
+            <span class="label">In development</span>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1 class="title">
+                <span>SF6 Avatar Recipes</span>
+                <span class="accent">Coming soon</span>
+            </h1>
+
+            <p class="lead">
+                A home for Street Fighter 6 avatar recipes: find a look, copy the code, paste it into the game.
+                We’re building it right now — new pieces land every week.
+            </p>
+
+            <!-- Kit (kit.com) form 10079641, double opt-in -->
+            <form class="newsletter" id="newsletter" action="https://app.kit.com/forms/10079641/subscriptions"
+                  method="post" novalidate>
+                <div class="newsletter__row">
+                    <div class="field" id="field">
+                        <label class="sr-only" for="email">Email address</label>
+                        <div class="field__control">
+                            <img src="./assets/icon-mail.svg" width="24" height="24" alt="">
+                            <input class="field__input" id="email" type="email" name="email_address"
+                                   placeholder="you@example.com" autocomplete="email" inputmode="email"
+                                   aria-describedby="email-error" required>
+                        </div>
+                        <p class="field__helper" id="email-error" hidden>
+                            <img src="./assets/icon-alert-circle.svg" width="14" height="14" alt="">
+                            <span>Enter a valid email, like name@example.com.</span>
+                        </p>
+                    </div>
+                    <button class="button button--primary" type="submit">Notify me</button>
+                </div>
+                <p class="small">One email when we launch, a few updates before that. No spam — unsubscribe anytime.</p>
+            </form>
+
+            <div class="alert" id="newsletter-success" role="status" hidden>
+                <img src="./assets/icon-check-circle.svg" width="18" height="18" alt="">
+                <div class="alert__content">
+                    <p class="alert__title">You’re on the list!</p>
+                    <p class="alert__text">Check your inbox and confirm your email — then we’ll let you know as soon as sfrecipes goes live.</p>
+                </div>
+            </div>
+
+            <p class="meta">
+                <img src="./assets/dot.svg" width="6" height="6" alt="">
+                <span class="small">Last update: <time datetime="2026-10">October 2026</time></span>
+            </p>
+        </section>
+
+        <section class="features" aria-labelledby="features-title">
+            <h2 class="features__title" id="features-title">What’s coming</h2>
+            <ul class="features__grid">
+                <li class="card">
+                    <div class="card__icon"><img src="./assets/icon-search.svg" width="22" height="22" alt=""></div>
+                    <div class="card__body">
+                        <h3 class="card__title">Search &amp; catalog</h3>
+                        <p class="card__text">Find a look by name, tag or recipe code, or browse by category.</p>
+                    </div>
+                </li>
+                <li class="card">
+                    <div class="card__icon"><img src="./assets/icon-copy.svg" width="22" height="22" alt=""></div>
+                    <div class="card__body">
+                        <h3 class="card__title">One-click copy</h3>
+                        <p class="card__text">Copy a recipe code and paste it straight into SF6 Character Creation.</p>
+                    </div>
+                </li>
+                <li class="card">
+                    <div class="card__icon"><img src="./assets/icon-upload.svg" width="22" height="22" alt=""></div>
+                    <div class="card__body">
+                        <h3 class="card__title">Share your recipes</h3>
+                        <p class="card__text">Create an account and publish your own avatars with a preview.</p>
+                    </div>
+                </li>
+                <li class="card">
+                    <div class="card__icon"><img src="./assets/icon-heart.svg" width="22" height="22" alt=""></div>
+                    <div class="card__body">
+                        <h3 class="card__title">Favorites</h3>
+                        <p class="card__text">Save the looks you like and come back to them anytime.</p>
+                    </div>
+                </li>
+            </ul>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p class="small">© 2026 sfrecipes.org</p>
+    </footer>
 </div>
+
+<script>
+    (function () {
+        var form = document.getElementById('newsletter');
+        var field = document.getElementById('field');
+        var input = document.getElementById('email');
+        var helper = document.getElementById('email-error');
+        var helperText = helper.querySelector('span');
+        var success = document.getElementById('newsletter-success');
+        var button = form.querySelector('button');
+        var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+        function showError(text) {
+            helperText.textContent = text;
+            helper.hidden = false;
+            field.classList.add('is-invalid');
+            input.setAttribute('aria-invalid', 'true');
+        }
+
+        function clearError() {
+            helper.hidden = true;
+            field.classList.remove('is-invalid');
+            input.removeAttribute('aria-invalid');
+        }
+
+        input.addEventListener('input', clearError);
+
+        form.addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            if (!EMAIL_RE.test(input.value.trim())) {
+                showError('Enter a valid email, like name@example.com.');
+                input.focus();
+                return;
+            }
+
+            button.disabled = true;
+
+            // Kit answers {"status": "success"} or {"status": "failed", "errors": {"fields": [...]}}
+            fetch(form.action, {method: 'POST', body: new FormData(form), headers: {Accept: 'application/json'}})
+                .then(function (response) {
+                    return response.json();
+                })
+                .then(function (data) {
+                    if (data.status === 'success') {
+                        form.hidden = true;
+                        success.hidden = false;
+                        if (window.gtag) {
+                            gtag('event', 'sign_up', {method: 'newsletter'});
+                        }
+                        return;
+                    }
+
+                    var fields = (data.errors && data.errors.fields) || [];
+                    showError(fields.indexOf('email_address') !== -1
+                        ? 'Enter a valid email, like name@example.com.'
+                        : 'Something went wrong. Please try again.');
+                })
+                .catch(function () {
+                    showError('Something went wrong. Please try again.');
+                })
+                .then(function () {
+                    button.disabled = false;
+                });
+        });
+    })();
+</script>
 </body>
 </html>
