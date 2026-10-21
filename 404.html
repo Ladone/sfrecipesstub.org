@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Page not found | SF Recipes</title>
+    <meta name="robots" content="noindex, follow">
+    <meta name="theme-color" content="#0f1013">
+    <link rel="icon" href="/assets/favicon-32.png" sizes="32x32" type="image/png">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <link rel="preload" href="/fonts/koulen-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <style>
+        @font-face {
+            font-family: 'Koulen';
+            src: url('/fonts/koulen-latin.woff2') format('woff2');
+            font-weight: 400;
+            font-style: normal;
+            /* tiny and preloaded: wait for it instead of flashing a fallback */
+            font-display: block;
+        }
+
+        @font-face {
+            font-family: 'Inter';
+            src: url('/fonts/inter-latin.woff2') format('woff2');
+            font-weight: 100 900;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        /* Arial tuned to Inter's metrics, so the swap doesn't shift the layout */
+        @font-face {
+            font-family: 'Inter Fallback';
+            src: local('Arial'), local('Helvetica');
+            ascent-override: 90.44%;
+            descent-override: 22.52%;
+            line-gap-override: 0%;
+            size-adjust: 107.12%;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0 16px;
+            background: #0f1013;
+            color: #f4f4f5;
+            font-family: 'Inter', 'Inter Fallback', system-ui, sans-serif;
+            text-align: center;
+        }
+
+        h1 {
+            margin: 0;
+            font-family: 'Koulen', Impact, sans-serif;
+            font-weight: normal;
+            font-size: min(104px, 20vw);
+            line-height: 0.92;
+        }
+
+        h1 span {
+            color: #f29a2e;
+        }
+
+        p {
+            margin: 0;
+            color: #a1a1aa;
+        }
+
+        a {
+            padding: 14px 24px;
+            border-radius: 12px;
+            background: #f29a2e;
+            color: #140c02;
+            font-weight: 600;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>404 <span>KO</span></h1>
+    <p>This page doesn’t exist.</p>
+    <a href="/">Back to sfrecipes</a>
+</body>
+</html>
